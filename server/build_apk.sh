@@ -87,7 +87,13 @@ javac --release 8 \
     -d $BUILD/obj $BUILD/MainActivity.java $BUILD/gen/com/lumen/web/R.java
 
 $TOOLS/d8 --release --min-api 23 --lib $PLATFORM \
-    --output $BUILD/out $(find $BUILD/obj -name '*.class')
+    --output $BUILD/out $(find $BUILD/obj -name '*.class') 2>&1
+
+if [ ! -f "$BUILD/out/classes.dex" ]; then
+  echo "ERROR: d8 did not produce classes.dex" >&2
+  ls -la "$BUILD/out/" >&2
+  exit 1
+fi
 
 cd $BUILD/out && zip -q base.apk classes.dex && cd /
 
