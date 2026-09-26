@@ -113,7 +113,7 @@ class Handler(BaseHTTPRequestHandler):
             return
         self._serve_static()
 
-    STATIC_DIR = '/workspace/app'
+    STATIC_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'app')
 
     def _serve_static(self):
         import mimetypes
