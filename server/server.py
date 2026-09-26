@@ -3,8 +3,9 @@ import json, subprocess, os, sys, tempfile
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from urllib.parse import urlparse
 
-BUILD_SH = '/workspace/server/build_apk.sh'
-OUT_DIR = '/workspace/server/output'
+BASE_DIR = os.path.realpath(os.path.dirname(os.path.abspath(__file__)))
+BUILD_SH = os.path.join(BASE_DIR, 'build_apk.sh')
+OUT_DIR = os.path.join(BASE_DIR, 'output')
 os.makedirs(OUT_DIR, exist_ok=True)
 
 class Handler(BaseHTTPRequestHandler):

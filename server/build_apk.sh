@@ -1,6 +1,7 @@
 #!/bin/bash
 # Build a WebView-shell APK. Usage: build_apk.sh <config.json> <out.apk>
 set -e
+DIR="$(cd "$(dirname "$0")" && pwd)"
 CFG="$1"
 BUILD=/tmp/apkbuild
 TOOLS=/opt/android-sdk/build-tools/34.0.0
@@ -29,11 +30,11 @@ sed -e "s|__PACKAGE__|com.lumen.web|g" \
     -e "s|__VERSION_CODE__|$VERSION_CODE|g" \
     -e "s|__VERSION_NAME__|$VERSION_NAME|g" \
     -e "s|__APP_NAME__|$APP_NAME|g" \
-    /workspace/server/template/AndroidManifest.xml > $BUILD/AndroidManifest.xml
+    $DIR/template/AndroidManifest.xml > $BUILD/AndroidManifest.xml
 
 ICON_OK=0
 mkdir -p $BUILD/res
-cp -r /workspace/server/template/res/* $BUILD/res/
+cp -r $DIR/template/res/* $BUILD/res/
 if [ -n "$ICON" ] && [ -f "$ICON" ]; then
   mkdir -p $BUILD/res/drawable
   python3 -c "
@@ -78,7 +79,7 @@ $(sed -e "s|__FORCE_DARK__|$FORCE_DARK|g" \
      -e "s|__EXTERNAL_LINKS__|$EXTERNAL|g" \
      -e "s|__HOST__|$HOST|g" \
      -e "s|__SITE_URL__|$SITE_URL|g" \
-     /workspace/server/template/java/com/lumen/web/MainActivity.java)
+     $DIR/template/java/com/lumen/web/MainActivity.java)
 EOF
 
 javac -source 8 -target 8 -bootclasspath $PLATFORM \
@@ -90,7 +91,7 @@ $TOOLS/d8 --release --min-api 23 --lib $PLATFORM \
 
 cd $BUILD/out && zip -q base.apk classes.dex && cd /
 
-KS=/workspace/server/.keystore
+KS=$DIR/.keystore
 if [ ! -f "$KS" ]; then
   keytool -genkeypair -keystore $KS -alias lumen -keyalg RSA -keysize 2048 \
     -validity 10000 -storepass lumen123456 -keypass lumen123456 \
