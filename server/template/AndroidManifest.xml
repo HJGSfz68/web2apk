@@ -6,7 +6,7 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="34"/>
+    <uses-sdk android:minSdkVersion="23" android:targetSdkVersion="35"/>
 
     <application
         android:label="__APP_NAME__"

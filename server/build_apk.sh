@@ -4,8 +4,8 @@ set -e
 DIR="$(cd "$(dirname "$0")" && pwd)"
 CFG="$1"
 BUILD=/tmp/apkbuild
-TOOLS=/opt/android-sdk/build-tools/34.0.0
-PLATFORM=/opt/android-sdk/platforms/android-34/android.jar
+TOOLS=/opt/android-sdk/build-tools/35.0.0
+PLATFORM=/opt/android-sdk/platforms/android-35/android.jar
 
 eval "$(python3 - "$CFG" <<'PYEOF'
 import json, sys
