@@ -1,0 +1,6 @@
+server/output/
+*.apk
+*.apk.idsig
+*.log
+__pycache__/
+*.pyc

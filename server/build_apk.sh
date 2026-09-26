@@ -34,8 +34,13 @@ sed -e "s|__PACKAGE__|com.lumen.web|g" \
 ICON_OK=0
 mkdir -p $BUILD/res
 cp -r /workspace/server/template/res/* $BUILD/res/
-if [ -n "$ICON" ] && [ -f "$ICON" ] && head -c 8 "$ICON" | grep -q $'\x89PNG'; then
-  mkdir -p $BUILD/res/drawable && cp "$ICON" $BUILD/res/drawable/icon.png && ICON_OK=1
+if [ -n "$ICON" ] && [ -f "$ICON" ]; then
+  mkdir -p $BUILD/res/drawable
+  python3 -c "
+from PIL import Image
+img = Image.open('$ICON').convert('RGBA')
+img.save('$BUILD/res/drawable/icon.png', 'PNG')
+" && ICON_OK=1
 fi
 if [ $ICON_OK -eq 0 ]; then
   mkdir -p $BUILD/res/drawable

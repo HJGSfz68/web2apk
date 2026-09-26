@@ -32,6 +32,15 @@ $('iconInput').addEventListener('change', e => {
   reader.readAsDataURL(file);
 });
 
+$('appName').addEventListener('input', () => {
+  const name = $('appName').value.trim();
+  if (!name) return;
+  try {
+    const py = pinyinPro.pinyin(name, { toneType: 'none', type: 'array' }).join('').toLowerCase().replace(/[^a-z0-9]/g, '');
+    if (py) $('pkg').value = `app.${py}.myweb`;
+  } catch (e) { /* pinyin library unavailable */ }
+});
+
 function validUrl(u) {
   try {
     const url = new URL(u);
