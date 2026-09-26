@@ -82,8 +82,8 @@ $(sed -e "s|__FORCE_DARK__|$FORCE_DARK|g" \
      $DIR/template/java/com/lumen/web/MainActivity.java)
 EOF
 
-javac --release 8 -bootclasspath $PLATFORM \
-    -classpath $BUILD/out/base.apk \
+javac --release 8 \
+    -classpath $PLATFORM:$BUILD/out/base.apk \
     -d $BUILD/obj $BUILD/MainActivity.java $BUILD/gen/com/lumen/web/R.java
 
 $TOOLS/d8 --release --min-api 23 --lib $PLATFORM \
