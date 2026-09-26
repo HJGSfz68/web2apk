@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>LUMEN · MOBILE STUDIO</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="brand">LUMEN · MOBILE STUDIO</div>
+    <h1>把网站装进手机</h1>
+    <p class="sub">输入网址，手机本地生成可安装、可分享的独立 APK。</p>
+    <div class="tags">
+      <span class="tag">本地生成</span>
+      <span class="tag">独立签名</span>
+      <span class="tag">无需服务器</span>
+    </div>
+  </header>
+
+  <section class="card">
+    <h2><span class="num">01</span> 应用信息</h2>
+    <p class="hint">名称、地址和唯一包名</p>
+
+    <label class="field">
+      <span>应用名称</span>
+      <input id="appName" type="text" placeholder="应用名称" maxlength="20">
+    </label>
+
+    <label class="field">
+      <span>网站地址</span>
+      <input id="siteUrl" type="url" placeholder="https://example.com" inputmode="url">
+    </label>
+
+    <label class="field">
+      <span>包名（英文小写，如 app.me.site）</span>
+      <input id="pkg" type="text" value="app.pangxie.myweb" autocomplete="off">
+    </label>
+
+    <div class="row">
+      <label class="field half">
+        <span>版本名</span>
+        <input id="verName" type="text" value="1.0.0">
+      </label>
+      <label class="field half">
+        <span>版本号</span>
+        <input id="verCode" type="number" value="1" min="1">
+      </label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">02</span> 图标与体验</h2>
+    <p class="hint">定制启动图标和浏览方式</p>
+
+    <div class="icon-row">
+      <div class="icon-preview" id="iconPreview">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <rect x="3" y="4" width="18" height="16" rx="3"/>
+          <line x1="7" y1="9" x2="17" y2="9"/>
+          <line x1="7" y1="13" x2="13" y2="13"/>
+          <circle cx="17" cy="16" r="1"/>
+        </svg>
+      </div>
+      <div class="icon-text">
+        <div class="icon-title">应用图标</div>
+        <div class="icon-sub">建议使用 512×512 方形图片</div>
+        <button class="btn ghost" id="pickIcon">选择图片</button>
+        <input type="file" id="iconInput" accept="image/*" hidden>
+      </div>
+    </div>
+
+    <div class="switch-row">
+      <div class="switch-text">
+        <div class="sw-title">网页深色适配</div>
+        <div class="sw-sub">让支持的网页跟随深色显示</div>
+      </div>
+      <button class="switch" id="swDark" role="switch" aria-checked="false" aria-label="网页深色适配"></button>
+    </div>
+    <div class="switch-row">
+      <div class="switch-text">
+        <div class="sw-title">全屏浏览</div>
+        <div class="sw-sub">隐藏状态栏，获得更大内容空间</div>
+      </div>
+      <button class="switch" id="swFull" role="switch" aria-checked="false" aria-label="全屏浏览"></button>
+    </div>
+    <div class="switch-row">
+      <div class="switch-text">
+        <div class="sw-title">链接交给浏览器</div>
+        <div class="sw-sub">网页里的 HTTP 链接在系统浏览器打开</div>
+      </div>
+      <button class="switch" id="swExt" role="switch" aria-checked="false" aria-label="链接交给浏览器"></button>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2><span class="num">03</span> 生成 APK</h2>
+    <p class="hint">配置只在本机处理，不上传网站数据</p>
+
+    <button class="btn generate" id="generate">生成可安装 APK</button>
+
+    <div class="result" id="result" hidden>
+      <div class="result-line" id="resultText"></div>
+      <div class="result-actions">
+        <button class="btn ghost" id="install">安装</button>
+        <button class="btn accent" id="share">分享 APK</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

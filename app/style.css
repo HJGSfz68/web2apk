@@ -1,0 +1,141 @@
+:root{
+  --bg:#0b0e1a;
+  --card:#151a2e;
+  --card2:#1a2040;
+  --input:#0f1426;
+  --border:#232b4d;
+  --text:#f2f4ff;
+  --sub:#8a93b8;
+  --accent:#2dd4bf;
+  --accent2:#3b82f6;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{
+  font-family:-apple-system,"PingFang SC","HarmonyOS Sans SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%,rgba(59,130,246,.18),transparent 60%),
+    radial-gradient(900px 500px at -20% 30%,rgba(45,212,191,.12),transparent 55%),
+    var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+.page{max-width:420px;margin:0 auto;padding:20px 16px 40px}
+.hero{
+  background:linear-gradient(135deg,#1b2246 0%,#221a4e 60%,#182a52 100%);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:22px 18px;
+  margin-bottom:18px;
+}
+.brand{font-size:11px;letter-spacing:2px;color:var(--sub);margin-bottom:10px}
+.hero h1{font-size:26px;font-weight:700;margin-bottom:8px}
+.hero .sub{font-size:13px;color:#c6cde8;line-height:1.6;margin-bottom:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{
+  background:rgba(45,212,191,.14);
+  color:var(--accent);
+  border:1px solid rgba(45,212,191,.35);
+  font-size:12px;padding:4px 12px;border-radius:999px;
+}
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  padding:18px 16px;
+  margin-bottom:16px;
+}
+.card h2{font-size:17px;font-weight:700;margin-bottom:4px}
+.num{
+  color:var(--accent);
+  font-size:14px;margin-right:6px;
+  background:rgba(45,212,191,.12);
+  border:1px solid rgba(45,212,191,.3);
+  border-radius:8px;padding:2px 7px;
+}
+.hint{font-size:12px;color:var(--sub);margin-bottom:14px}
+.field{display:block;margin-bottom:12px}
+.field span{display:block;font-size:13px;color:#c6cde8;margin-bottom:6px}
+.field input{
+  width:100%;
+  background:var(--input);
+  border:1px solid var(--border);
+  border-radius:12px;
+  color:var(--text);
+  font-size:15px;
+  padding:12px 14px;
+  outline:none;
+}
+.field input:focus{border-color:var(--accent)}
+.row{display:flex;gap:12px}
+.row .half{flex:1}
+.icon-row{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+.icon-preview{
+  width:64px;height:64px;flex-shrink:0;
+  border:2px solid var(--accent);
+  border-radius:14px;
+  color:var(--accent);
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(45,212,191,.06);
+  overflow:hidden;
+}
+.icon-preview img{width:100%;height:100%;object-fit:cover}
+.icon-preview svg{width:32px;height:32px}
+.icon-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.icon-sub{font-size:12px;color:var(--sub);margin-bottom:10px}
+.switch-row{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 0;
+  border-top:1px solid var(--border);
+}
+.switch-text{padding-right:12px}
+.sw-title{font-size:14px;font-weight:600;margin-bottom:2px}
+.sw-sub{font-size:12px;color:var(--sub)}
+.switch{
+  width:46px;height:26px;flex-shrink:0;
+  background:#2a3257;
+  border:1px solid var(--border);
+  border-radius:999px;
+  position:relative;cursor:pointer;
+  transition:background .2s;
+}
+.switch::after{
+  content:"";
+  position:absolute;top:2px;left:2px;
+  width:20px;height:20px;border-radius:50%;
+  background:#fff;
+  transition:transform .2s;
+}
+.switch.on{background:var(--accent)}
+.switch.on::after{transform:translateX(20px)}
+.btn{
+  border:none;cursor:pointer;
+  border-radius:12px;
+  font-size:15px;font-weight:600;
+  padding:12px 18px;
+  transition:opacity .2s,transform .1s;
+}
+.btn:active{transform:scale(.97)}
+.btn.ghost{background:#232a4d;color:var(--text)}
+.btn.accent{background:var(--accent);color:#04231f}
+.btn.generate{
+  width:100%;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  color:#06121f;
+  padding:15px;
+  font-size:16px;
+}
+.btn:disabled{opacity:.6;cursor:default}
+.result{margin-top:14px}
+.result-line{font-size:13px;color:var(--accent);margin-bottom:12px;word-break:break-all}
+.result-actions{display:flex;gap:12px}
+.result-actions .btn{flex:1}
+.foot{display:flex;flex-direction:column;align-items:flex-end;gap:2px;padding:8px 4px}
+.foot-badge{display:flex;align-items:center;gap:6px}
+.foot-logo{
+  width:18px;height:18px;border-radius:5px;
+  background:#fff;color:#111;
+  font-size:11px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.foot-name{font-size:13px;color:var(--text)}
+.foot-sub{font-size:11px;color:var(--sub)}
