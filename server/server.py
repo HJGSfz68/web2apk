@@ -146,4 +146,4 @@ class Handler(BaseHTTPRequestHandler):
 if __name__ == '__main__':
     port = 8001
     print(f'APK build server listening on {port}', flush=True)
-    HTTPServer(('127.0.0.1', port), Handler).serve_forever()
+    HTTPServer(('0.0.0.0', port), Handler).serve_forever()
